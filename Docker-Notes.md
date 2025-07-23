@@ -1,16 +1,16 @@
 # docker交互原理图
-![alt text](images/image.png)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image.png\)
 
 # run运行流程图
 
-![alt text](images/image-1.png)
-![alt text](images/image-2.png)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-1.png\)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-2.png\)
 
 # Docker为什么比VM运行快？
 1、docker有着比虚拟机更少的抽象层  
 2、docker利用的是宿主机的内核，M需要的是Guest OS  
 //原理图  
-![alt text](images/image-3.png)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-3.png\)
 
 #  常用命令
 ```
@@ -41,9 +41,9 @@ docker run  【可选参数】 image
 -p    随机指定端口  
 ```  
 测试、启动进入容器  
-![alt text](images/image-4.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-4.png\)  
 从容器中退回主机  
-![alt text](images/image-5.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-5.png\)  
 列出所有运行的容器   
 ```  
 docker  ps  命令  
@@ -53,7 +53,7 @@ docker  ps  命令
 -q      只显示容器的编号    
 ```  
 // 运行结果图  
-![alt text](images/image-6.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-6.png\)  
 退出容器  
 ``` 
 exit  容器停止并退出
@@ -80,7 +80,7 @@ nginx,容器启动后，发现自己没有提供服务，就会立刻停止，�
 docker run -d  镜像名
 ```   
 问题：docker ps发现centos停止了   
-![alt text](images/image-7.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-7.png\)  
 查看日志  
 ```
 docker logs
@@ -95,7 +95,7 @@ shell脚本：
 ```
 docker top  容器id 
 ```
-![alt text](images/image-8.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-8.png\)  
 查看镜像的源数据
 ```
 docker inspect   容器id 
@@ -322,7 +322,7 @@ docker attach   进入容器正在执行的终端，不会启动新的进程
 docker cp 容器id:容器内路径  目的主机路径
 ```
 拷贝是一个手动过程，未来我们使用-v卷的技术，可以实现自动同步  
-![alt text](images/image-9.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-9.png\)  
 ```
 搜索镜像:docker search nginx
 下载镜像：docker pull nginx
@@ -334,10 +334,10 @@ docker   run
 --name  给容器命名
 -p  宿主机端口，容器内部端口
 ```
-![alt text](images/image-10.png)
-![alt text](images/image-11.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-10.png\)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-11.png\)  
  端口暴露概念  
- ![alt text](images/image-12.png)  
+ ![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-12.png\)  
  思考问题：我们每次改动nginx配置文件，都需要进入容器内部？十分的麻烦，我要是可以在容器外部提供一个映射路径，达到在容器修改文件名，容器内部就可以自动修改？  
  docker安装一个tomcat  
  docker run -it  --rm  tomcat:9.0   容器用完即删  
@@ -349,9 +349,9 @@ docker   run
  docker  run -d  -p  3355:8080 --name  tomcat01  tomcat
  ```
  进入容器  
- ![alt text](images/image-13.png)  
+ ![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-13.png\)  
  发现问题linux命令少了，没有webapps,阿里云镜像的原因，默认是最小的镜像，所有不必要的都剔除掉，保证最小可运行环境  
- ![alt text](images/image-14.png)   
+ ![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-14.png\)   
  思考问题：我们以后要部署项目，如果每次都要进容器是不是十分麻烦？我要是可以在容器外部提供一个映射路径，webapps,我们再外部放置项目，就自动同步到内部就好了！  
  docker容器tomcat+网站  
  部署es+kibana  
@@ -370,20 +370,20 @@ docker   run
  ```
   docker  stats     #查看cpu状态
   ```
-  ![alt text](images/image-15.png)   
+  ![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-15.png\)   
   测试es是否成功  
   ```
   curl localhost:9200
   ```
-  ![alt text](images/image-16.png)  
+  ![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-16.png\)  
   查看下载es后的docker  stats  cpu内存   
- ![alt text](images/image-18.png) 
+ ![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-18.png\) 
   赶紧关闭，增加内存的限制，修改配置文件  -e  环境配置修改  
   ```
   docker  run -d --name  elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms64m -Xmx512m" elasticsearch:7.6.2
   ```
   作业:使用kibanna连接es？思考网络如何才能连接过去   
-  ![alt text](images/image-19.png)  
+  ![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-19.png\)  
   ### Docker可视化  
   portainer(先用这个）
   ```
@@ -411,7 +411,7 @@ docker   run
     portainer/portainer-ce:latest：使用 Portainer Community Edition（官方推荐）
 ```   
 测试结果：
-    ![alt text](images/image-20.png) 
+    ![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-20.png\) 
      
 
 
@@ -438,7 +438,7 @@ unionfs(联合文件系统）
 我们下载的时候看到一层一层的就是这个
 对于一个精简的os，rootfs可以很小，只需要包含基本的命令，工具和程序库就可以了，因为底层直接用host的kernel，自己只要提供rootfs就可以了。由此可见对于不同的linux发行版，bootfs基本是一致的，rootfs会有差别，因此不同的发行版本可以公用bootf  
 虚拟机是分钟级别，容器是秒钟级别  
-![alt text](images/image-21.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-21.png\)  
 docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部，这一层就是我们通常说的容器层，容器之下的都叫镜像层  
 ###  如何提交一个自己的镜像
 commit镜像  
@@ -455,7 +455,7 @@ docker  commit  -m="提交的描述信息"  -a="作者"  容器id  目标镜像�
 ```
 docker commit -a="sjj" -m="add webapps app"  c923d24bd399  tomcat01:1.0
 ```
-![alt text](images/image-22.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-22.png\)  
 如果想要保存当前容器的状态，可以通过commit来提交，获得一个镜像  
 
 # 容器数据卷
@@ -475,11 +475,11 @@ docker run -it -v 主机目录，容器目录
 docker  run -it  -v /home/ceshi:/home centos /bin/bash
 ```
 启动起来的时候可以通过docker inspect 容器id查看  
-![alt text](images/image-23.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-23.png\)  
 容器内：  
-![alt text](images/image-24.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-24.png\)  
 容器外：
-![alt text](images/image-25.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-25.png\)  
 测试  
 1、停止容器  
 2、宿主机上修改文件  
@@ -488,7 +488,7 @@ docker  run -it  -v /home/ceshi:/home centos /bin/bash
 好处：以后修改只需要载本地修改即可，容器内会自动同步  
 ### 实战安装Mysql  
 思考mysql持久化问题   
-![alt text](images/image-26.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-26.png\)  
 运行容器，需要做数据挂载，安装启动mysql，需要配置密码的，这是要注意的  
 ```
 docker  run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql   -e  MYSQL_ROOT_PASSWORD=mysql@2025  --name mysql01  mysql:5.7
@@ -501,14 +501,14 @@ docker  run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql
 --name  容器名字
 ```
 启动成功后，在本地使用navicat测试成功  
-![alt text](images/image-27.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-27.png\)  
 在本地测试创建一个数据库，查看映射路径是否Ok  
-![alt text](images/image-28.png)  
-![alt text](images/image-29.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-28.png\)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-29.png\)  
 假设将容器删除  
 发现挂载到本地的数据卷依旧没有丢失，这就实现了容器数据持久化功能  
-![alt text](images/image-30.png)  
-![alt text](images/image-31.png)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-30.png\)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-31.png\)
 ### 匿名挂卷  
 ```
 docker run -d -P --name nginx01 -v /etc/nginx nginx
@@ -517,18 +517,18 @@ docker run -d -P --name nginx01 -v /etc/nginx nginx
 ```
 docker volume   ls
 ```
-![alt text](images/1752426265395_image.png)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752426265395_image.png\)
 这里发现，这种就是匿名挂载，我们在-v只写了容器内的路径，没有写容器外的路径  
 ###  具名挂载
 ```
 docker run -d -P --name nginx02 -v juming-nginx:/etc/nginx nginx
 ```
-![alt text](images/1752426229278_image.png)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752426229278_image.png\)
 通过-v  卷名：容器内路径  
 查看一下这个卷：docker volume inspect juming-nginx  
-![alt text](images/1752426130352_image.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752426130352_image.png\)  
 所有的docker容器内的卷，没有指定目录的情况下都是在/var/lib/docker/volumes/xxxx/data  
-![alt text](images/1752427048868_image.png)
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427048868_image.png\)
 我们通过具名挂载可以方便的找到我们的一个卷，大多数情况下使用的具名挂载  
 如何确定是具名挂载还是匿名挂载，还是指定路径挂载  
 -v  容器内路径                     匿名挂载  
@@ -548,31 +548,31 @@ dockerfile就是用来构建docker镜像的构建文件
 通过这个脚本可以 生成镜像，镜像是一层一层的，脚本一个个的命令，每个命令都是一层  
 创建一个dockerfile文件，名字可以随机，建议dockerfile  
 文件中的内容，指令大写，参数  
-![alt text](images/1752427316339_image.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427316339_image.png\)  
 这里的每个命令，就是镜像的一层  
 docker build -f <Dockerfile路径> -t <镜像名:标签> <构建上下文路径>  
 ```
 docker build -f /home/docker-test-volume/dockerfile1 -t sjj/centos:1.0 .
 ```
-![alt text](images/1752427373980_image.png)   
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427373980_image.png\)   
 启动自己写的镜像  
 docker run -it   镜像id  
-![alt text](images/1752427410825_image.png)   
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427410825_image.png\)   
 这个卷和外部一定有一个同步的目录  
 docker inspect 容器id   
-![alt text](images/1752427430660_image.png)   
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427430660_image.png\)   
 测试是否同步出去  
-![alt text](images/1752427447571_image.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427447571_image.png\)  
 这种方式未来的使用的特别多，因为我们通常会构建自己的镜像；假设构建镜像的时候没有挂载卷，要手动镜像挂载  -v  卷名:容器内路径   
 
 # 数据卷容器
 两个mysql同步数据  
-![alt text](images/1752427499927_image.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427499927_image.png\)  
 启动3个容器，通过我们刚才自己的写镜像启动  
-![alt text](images/1752427527288_image.png)  
-![alt text](images/1752427537697_image.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427527288_image.png\)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427537697_image.png\)  
 测试，删除容器docker01，查看docker01和docker02依旧可以访问这两个文件  
-![alt text](images/1752427556496_image.png)  
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427556496_image.png\)  
 多个mysql实现数据共享  
 ```
 docker  run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql   -e  MYSQL_ROOT_PASSWORD=mysql@2025  --name mysql01  mysql:5.7    
@@ -596,7 +596,7 @@ dockerfile是用来构建镜像的文件，命令参数脚本
 2、从上到下顺序执行  
 3、#表示注释  
 4、每一个指令都会创建提交一个新的镜像层，并提交  
-![alt text](images/1752427796940_image.png)   
+![]\(https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/1752427796940_image.png\)   
 docker file是面向开发的，我们以后要发布项目，做镜像，就需要编写  dockerfile文件，这个文件十分简单  
 dockerfile镜像逐渐成为企业交付的标准，必须要掌握  
 步骤：开发，部署，运维   
