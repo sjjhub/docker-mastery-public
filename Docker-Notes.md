@@ -370,6 +370,7 @@ docker   run
  ```
   docker  stats     #查看cpu状态
   ```
+  ![alt text](images/1753249345573_image.png)
   ![alt text](https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-15.png)   
   测试es是否成功  
   ```
@@ -477,6 +478,7 @@ docker  run -it  -v /home/ceshi:/home centos /bin/bash
 启动起来的时候可以通过docker inspect 容器id查看  
 ![alt text](https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-23.png)  
 容器内：  
+![alt text](images/1753249665050_image.png)
 ![alt text](https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-24.png)  
 容器外：
 ![alt text](https://cdn.jsdelivr.net/gh/sjjhub/docker-mastery-public@master/images/image-25.png)  
